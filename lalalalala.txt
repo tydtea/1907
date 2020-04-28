@@ -1,2 +1,6 @@
 ni hao  wo ye hao da jia dou hao
+<<<<<<< HEAD
 徐华到此一游
+=======
+come on
+>>>>>>> 0850397d5d3ff617a0ab2d8b032bb97171445f04
