@@ -1,6 +1,6 @@
 组长：刘文博
 组员：陈可欣，张如梦，漆云峰
-地址（git@github.com:Create-QQQQ/one.git）
+地址（https://github.com/Create-QQQQ/one）
 刘文博（登录页面）
 陈可欣（新手指南）
 漆云峰（烘培圈）
