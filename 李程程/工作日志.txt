@@ -1,7 +1,7 @@
   
 项目：聚橙网
 
-项目地址：https://github.com/lichengcheng-abc/reactXm
+项目地址：https://github.com/lichengcheng-abc/jcXm
 
 
 组长：李程程
