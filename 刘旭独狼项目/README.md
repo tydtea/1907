@@ -1,4 +1,6 @@
-# 项目 网易云音乐
+# 项目 网易云音乐 这个项目可能会死在路上
+
+https://github.com/Liuxu-web/music
 
     组员: 刘旭 还是我刘旭哒
 
