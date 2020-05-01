@@ -1,0 +1,12 @@
+项目名称：烘焙帮
+成员:郝艳华，易荆州，余永胜，赵宇
+gitee项目地址https://gitee.com/zhaoyuweb/teamtwo
+之后会把项目放到git 
+0426
+赵宇：创建了react项目
+0427
+赵宇：分化页面
+0428
+赵宇：创建store，router等
+0429
+郝艳华：小窝页面修改  
