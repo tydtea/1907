@@ -70,10 +70,13 @@
 
 ### 查看提交历史
 
-- git log(信息更完整)
-  - 可以查看所有分支的所有操作记录（包括已经被删除的 commit 记录和 reset 的操作）,一次性查看不完可以按回车继续查看，按 q 退出
-- git reflog(信息没有那么完整，但是看起来更方便)
-  - 不能察看已经删除了的 commit 记录
+- git log 可以显示所有提交过的版本信息，不包括已经被删除的 commit 记录和 reset 的操作
+
+- git log --graph --oneline 图形化显示当前分支的提交日志
+
+- git reflog 是显示所有的操作记录，包括提交，回退的操作。一般用来找出操作记录中的版本号，进行回退。
+
+- git reflog 常用于恢复本地的错误操作。
 
 ### git fetch 和 git pull
 
@@ -89,12 +92,47 @@
 
 - 举例：将 test 分支合并到 dev 分支
 
-1. 切换到 dev 分支:git switch dev,切换过去以后，你写的代码不见的，这是正常的，因为 dev 分支上没有你写的代码，你是在 test 分支上写的
+1. 切换到 dev 分支:git switch dev(如果当前分支有代码未 commit，则不能切换),切换过去以后，你写的代码不见的，这是正常的，因为 dev 分支上没有你写的代码，你是在 test 分支上写的
 
 2. 确认当前分支是不是 dev(防止失误):git branch
 
-3. 和并 test 分支:git merge test，合并完以后，dev 分支和 test 分支的最新提交是完全一样的，如果遇到冲突的话，手动解决冲突
+3. 在 dev 分支将 test 分支合并:git merge test，合并完以后，dev 分支和 test 分支的最新提交是完全一样的，如果遇到冲突的话，手动解决冲突
+
+4. 合并完以后将 dev，推送到 github，git push dev
+
+5. 然后切换回自己的分支，继续开发 git switch test
 
 ### 在远程存储库中列出引用(不常用)
 
 - git ls-remote
+
+### git reset 撤销提交操作的三种模式
+
+> git reset 的作用是修改 HEAD 的位置，即将 HEAD 指向的位置改变为之前存在的某个版本
+
+> 适用场景： 如果想恢复到之前某个提交的版本，且那个版本之后提交的版本我们都不要了，就可以用这种方法。
+
+- --hard commit_id：重置位置的同时，直接将 working Tree 工作目录、 index 暂存区及 repository 都重置成目标 Reset 节点的內容,效果看起来等同于清空暂存区和工作区。
+
+- --soft commit_id：重置位置的同时，保留 working Tree 工作目录和 index 暂存区的内容，只让 repository 中的内容和 reset 目标节点保持一致，因此原节点和 reset 节点之间的【差异变更集】会放入 index 暂存区中(Staged files)。所以效果看起来就是工作目录的内容不变，暂存区原有的内容也不变，只是原节点和 Reset 节点之间的所有差异都会放到暂存区中。
+
+- --mixed(默认) commit_id：重置位置的同时，只保留 Working Tree 工作目录的內容，但会将 Index 暂存区 和 Repository 中的內容更改和 reset 目标节点一致，因此原节点和 Reset 节点之间的【差异变更集】会放入 Working Tree 工作目录中。所以效果看起来就是原节点和 Reset 节点之间的所有差异都会放到工作目录中。
+
+### git revert
+
+> git revert 是用于“反做”某一个版本，以达到撤销该版本的修改的目的。但是会生成一次新的提交，需要填写提交注释
+
+> 适用场景： 如果我们想撤销之前的某一版本，但是又想保留该目标版本后面的版本，记录下这整个版本变动流程，就可以用这种方法。
+
+> 如果有冲突，解决冲突，然后重新 commit，push 到远程分支，这时远程仓库会多了一个 commit，而原来想要撤销的那条 commit 记录还在，但是最终代码，也就是最新的 commit，已经把不要的代码移除了，此时达到了我们的目的。
+
+- git revert commit_id
+- git revert -m commit_id(如果这次提交是别的分支合并过来的，需要加参数-m)
+
+### git rebase
+
+> rebase 操作可以把本地未 push 的分叉提交历史整理成直线；
+
+> rebase 的目的是使得我们在查看历史提交的变化时更容易，因为分叉的提交需要三方对比。
+
+- [git rebase 详解](https://www.liaoxuefeng.com/wiki/896043488029600/1216289527823648)
