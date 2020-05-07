@@ -1,6 +1,8 @@
 项目：聚橙网
 
-项目地址：https://github.com/dxw-max/reactProject
+github地址：https://github.com/dxw-max/reactProject
+
+项目线上地址：http://39.97.160.195:8888
 
 组长：
 	段晓文-->首页
