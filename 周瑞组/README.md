@@ -1,4 +1,4 @@
-### 上线地址:<zr6b.com>
+### 上线地址:zr6b.com
 #### 项目地址：<https://github.com/zr6b/juooo>
 ## 组员
 ####  周瑞 陈皓男 戴元晞 白廷东 郝罗强
